@@ -139,10 +139,11 @@ const Booking = () => {
             transition={{ duration: 0.6 }}
             style={{ position: 'relative' }}
           >
-            <div style={{ 
+            <div className="sidebar-avatar-wrapper" style={{ 
               width: '180px', height: '180px', borderRadius: '50%', 
               overflow: 'hidden', border: '6px solid white',
-              marginBottom: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
+              marginBottom: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+              transition: 'all 0.3s ease'
             }}>
               <img 
                 src="/ananya-grey-studio.webp" 
@@ -409,6 +410,32 @@ const Booking = () => {
             minHeight: auto !important;
             position: relative !important;
             top: auto !important;
+            padding: 32px 20px !important;
+            border-right: none !important;
+            border-bottom: 1px solid var(--border-light) !important;
+          }
+          .sidebar-avatar-wrapper {
+            width: 120px !important;
+            height: 120px !important;
+            margin-bottom: 16px !important;
+          }
+          h1[style*="fontSize: '2.2rem'"] {
+            font-size: 1.8rem !important;
+          }
+          p[style*="fontSize: '1.1rem'"] {
+            font-size: 0.95rem !important;
+            margin-bottom: 16px !important;
+          }
+          div[style*="gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))'"] {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          div[style*="padding: '24px var(--space-8) var(--space-12) var(--space-8)'"] {
+            padding: 20px var(--space-4) !important;
+          }
+          div[style*="padding: '28px'"] {
+            padding: 20px !important;
+            min-height: auto !important;
           }
           div[style*="height: 100px"] { height: 80px !important; }
         }
