@@ -8,8 +8,16 @@ const FloatingBookingBtn = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button only after scrolling past the hero section
-      if (window.scrollY > 400) {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Show button after scrolling past hero (400px)
+      // Hide button when approaching the footer (within 400px of the bottom)
+      const isPastHero = scrollY > 400;
+      const isNearBottom = windowHeight + scrollY > documentHeight - 400;
+
+      if (isPastHero && !isNearBottom) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

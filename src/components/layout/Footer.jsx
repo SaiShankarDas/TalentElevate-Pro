@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, ArrowUpRight } from 'lucide-react';
+import ShnkrDevBadge from '../ui/ShnkrDevBadge';
 
 const LinkedInIcon = ({ size = 18 }) => (
   <svg 
@@ -162,9 +163,7 @@ const Footer = () => {
           <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem' }}>
             © {currentYear} Priyanshi Shah. All rights reserved.
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem' }}>
-            Designed for ambitious professionals.
-          </p>
+          <ShnkrDevBadge />
         </div>
       </div>
 
