@@ -223,6 +223,47 @@ button {
 
 @media (max-width: 768px) {
   .md\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  
+  :root {
+    --space-16: 3rem;
+    --space-24: 4rem;
+  }
+
+  .h1 { font-size: 2.5rem; }
+  .h2 { font-size: 2rem; }
+  
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .mobile-carousel {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: var(--space-4) !important;
+    padding: 0 var(--space-4) var(--space-8) var(--space-4) !important;
+    margin: 0 calc(var(--space-4) * -1) !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-carousel > * {
+    flex: 0 0 85% !important;
+    min-width: 280px !important;
+    scroll-snap-align: center !important;
+  }
+
+  .vip-cta-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: var(--space-8) !important;
+  }
 }
 
 @media (min-width: 769px) {

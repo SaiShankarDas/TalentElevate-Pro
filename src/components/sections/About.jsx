@@ -140,7 +140,7 @@ const About = () => {
           paddingBottom: 'var(--space-16)',
         }}
       >
-        <div className="container" style={{
+        <div className="container vip-cta-container" style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexWrap: 'wrap', gap: 'var(--space-6)',
           padding: '2rem',

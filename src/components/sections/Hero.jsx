@@ -199,7 +199,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Keyframe animations */}
+      {/* Keyframe animations & Mobile Overrides */}
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
@@ -212,6 +212,26 @@ const Hero = () => {
         @keyframes pulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        @media (max-width: 768px) {
+          section { padding: var(--space-16) 0 !important; }
+          .h1 { text-align: center; margin-bottom: var(--space-4) !important; }
+          .text-lg { text-align: center; margin: 0 auto var(--space-8) auto !important; width: 100% !important; }
+          div[style*="inline-flex"] { width: 100%; justify-content: center; }
+          div[style*="display: flex; gap: var(--space-4)"] { justify-content: center; }
+          
+          /* Adjust floating cards for mobile */
+          div[style*="left: -24px"] { left: 0 !important; top: -10px !important; }
+          div[style*="right: -16px"] { right: 0 !important; bottom: -10px !important; }
+          div[style*="right: -30px"] { right: 0 !important; transform: scale(0.9) !important; }
+          
+          /* Stats row */
+          div[style*="justify-content: space-between"] {
+            justify-content: center !important;
+            gap: var(--space-8) !important;
+            text-align: center;
+          }
         }
       `}</style>
     </section>

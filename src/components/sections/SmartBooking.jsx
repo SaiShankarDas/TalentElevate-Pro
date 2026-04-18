@@ -262,6 +262,19 @@ const SmartBooking = () => {
           </div>
         </motion.div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .glass-card.grid.grid-cols-1.md\\:grid-cols-2 {
+            border-radius: var(--radius-lg) !important;
+          }
+          div[style*="padding: var(--space-8)"] {
+            padding: var(--space-6) var(--space-4) !important;
+          }
+          .grid.grid-cols-2.gap-3 {
+            grid-template-columns: repeat(1, 1fr) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

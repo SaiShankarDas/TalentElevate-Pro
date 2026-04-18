@@ -5,6 +5,7 @@ import {
   CheckCircle2, Award, Users, FileText, Briefcase, ChevronRight
 } from 'lucide-react';
 import { staggerContainer, staggerChild, fadeUp, scaleIn } from '../hooks/useAnimations';
+import BookingModal from '../components/ui/BookingModal';
 
 const LinkedInIcon = ({ size = 18 }) => (
   <svg 
@@ -30,6 +31,13 @@ const Booking = () => {
   }, []);
 
   const [activeTab, setActiveTab ] = useState('All');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleOpenModal = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
 
   const tabs = ['All', '1:1 Call', 'Resume/Profile', 'Interview Prep'];
 
@@ -367,6 +375,7 @@ const Booking = () => {
                       <motion.button
                         whileHover={{ scale: 1.1, background: '#000', color: '#fff' }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => handleOpenModal(service)}
                         style={{ 
                           width: '40px', height: '40px', borderRadius: '50%', background: '#fff', border: '1px solid #e5e7eb',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
@@ -382,8 +391,14 @@ const Booking = () => {
             </AnimatePresence>
           </motion.div>
         </div>
+        </div>
       </div>
-    </div>
+
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        service={selectedService}
+      />
 
       <style>{`
         @media (max-width: 1024px) {

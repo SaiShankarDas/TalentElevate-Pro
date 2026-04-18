@@ -87,40 +87,44 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             style={{
               position: 'fixed',
               inset: 0,
               zIndex: 100,
-              background: 'var(--bg-primary)',
+              background: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(16px)',
               padding: 'var(--space-6)',
               display: 'flex',
               flexDirection: 'column'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-12)' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--bg-dark)' }}>
+              <div style={{ fontWeight: 800, fontSize: '1.25rem', color: 'var(--bg-dark)', letterSpacing: '0.02em' }}>
                 PRIYANSHI SHAH
               </div>
-              <button onClick={() => setMobileMenuOpen(false)}>
+              <button 
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ padding: '8px', background: 'var(--bg-secondary)', borderRadius: '50%' }}
+              >
                 <X size={24} />
               </button>
             </div>
             
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)', flex: 1 }}>
-              {navLinks.map((link) => (
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              {navLinks.map((link, idx) => (
                 <motion.li 
                   key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + idx * 0.1 }}
                 >
                   <a 
                     href={link.href} 
-                    style={{ fontSize: '1.5rem', fontWeight: 600 }}
+                    style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--bg-dark)', letterSpacing: '-0.02em' }}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -129,17 +133,22 @@ const Navbar = () => {
               ))}
             </ul>
             
-            <div style={{ marginTop: 'auto' }}>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              style={{ marginTop: 'auto' }}
+            >
               <Link 
                 to="/booking"
                 className="btn btn-primary" 
-                style={{ width: '100%', padding: '1rem', justifyContent: 'center' }}
+                style={{ width: '100%', padding: '1.25rem', justifyContent: 'center', fontSize: '1rem' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <Calendar size={18} />
+                <Calendar size={20} />
                 <span>Book Priority Access</span>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
