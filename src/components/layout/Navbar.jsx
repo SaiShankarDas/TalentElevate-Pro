@@ -42,25 +42,38 @@ const Navbar = () => {
       >
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="logo" style={{ fontWeight: 700, fontSize: '1.25rem', letterSpacing: '0.02em', color: 'var(--bg-dark)' }}>
-            <a href="/">PRIYANSHI SHAH</a>
+            <Link to="/">PRIYANSHI SHAH</Link>
           </div>
 
           <nav className="desktop-nav" style={{ display: 'none' }}>
             <ul style={{ display: 'flex', gap: 'var(--space-8)' }}>
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} style={{ 
-
-                    fontSize: '0.9rem', 
-                    fontWeight: 500,
-                    color: 'var(--text-secondary)',
-                    transition: 'color 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'}
-                  onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/#') ? (
+                    <a href={link.href} style={{ 
+                      fontSize: '0.9rem', 
+                      fontWeight: 500,
+                      color: 'var(--text-secondary)',
+                      transition: 'color 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'}
+                    onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link to={link.href} style={{ 
+                      fontSize: '0.9rem', 
+                      fontWeight: 500,
+                      color: 'var(--text-secondary)',
+                      transition: 'color 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'}
+                    onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -122,13 +135,23 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + idx * 0.1 }}
                 >
-                  <a 
-                    href={link.href} 
-                    style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--bg-dark)', letterSpacing: '-0.02em' }}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/#') ? (
+                    <a 
+                      href={link.href} 
+                      style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--bg-dark)', letterSpacing: '-0.02em' }}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link 
+                      to={link.href} 
+                      style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--bg-dark)', letterSpacing: '-0.02em' }}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </motion.li>
               ))}
             </ul>

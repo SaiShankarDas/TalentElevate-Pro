@@ -87,15 +87,27 @@ const Footer = () => {
                 { label: 'About', href: '/#about' },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} style={{ 
-                    color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', 
-                    transition: 'color 0.2s' 
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith('/#') ? (
+                    <a href={link.href} style={{ 
+                      color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', 
+                      transition: 'color 0.2s' 
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.href} style={{ 
+                      color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', 
+                      transition: 'color 0.2s' 
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
